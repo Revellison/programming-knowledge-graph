@@ -1,0 +1,523 @@
+:root {
+    --bg-color: #121212;
+    --primary-color: #1e1e1e;
+    --secondary-color: #2d2d2d;
+    --text-color: #e0e0e0;
+    --accent-color: #4f5d75;
+    --highlight-color: #61dafb;
+    --frontend-color: #61dafb;
+    --backend-color: #85dcb8;
+    --cs-color: #e8a87c;
+    --database-color: #c38d9e;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+header {
+    padding: 2rem;
+    background-color: var(--primary-color);
+    border-bottom: 1px solid var(--secondary-color);
+}
+
+header h1 {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    gap: 2rem;
+}
+
+nav a {
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+nav a:hover {
+    background-color: var(--secondary-color);
+    color: var(--highlight-color);
+}
+
+main {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.timeline-container {
+    margin: 3rem 0;
+    position: relative;
+}
+
+.timeline {
+    height: 4px;
+    background-color: var(--secondary-color);
+    position: relative;
+    margin: 4rem 0;
+}
+
+.node {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: var(--accent-color);
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.node-label {
+    position: absolute;
+    bottom: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--primary-color);
+    border: 1px solid var(--secondary-color);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 1;
+    pointer-events: none;
+}
+
+.node:hover {
+    transform: translateY(-50%) scale(1.2);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.node::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    cursor: pointer;
+    background-color: transparent;
+    padding: 10px;
+}
+
+.node-frontend {
+    background-color: var(--frontend-color);
+}
+
+.node-backend {
+    background-color: var(--backend-color);
+}
+
+.node-cs {
+    background-color: var(--cs-color);
+}
+
+.node-database {
+    background-color: var(--database-color);
+}
+
+.node-progress {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: var(--highlight-color);
+    transform-origin: center;
+    clip-path: polygon(50% 50%, 100% 0, 100% 100%, 0 100%, 0 0);
+    opacity: 0.7;
+}
+
+.node-frontend .node-progress {
+    background-color: var(--frontend-color);
+}
+
+.node-backend .node-progress {
+    background-color: var(--backend-color);
+}
+
+.node-cs .node-progress {
+    background-color: var(--cs-color);
+}
+
+.node-database .node-progress {
+    background-color: var(--database-color);
+}
+
+.topic-info {
+    display: none;
+}
+
+.content {
+    background-color: var(--primary-color);
+    padding: 2rem;
+    border-radius: 4px;
+    min-height: 400px;
+}
+
+.content h2 {
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--secondary-color);
+    padding-bottom: 0.5rem;
+}
+
+.content pre {
+    background-color: var(--secondary-color);
+    padding: 1rem;
+    border-radius: 4px;
+    overflow-x: auto;
+    margin: 1rem 0;
+    max-width: 100%;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.content code {
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 0.9em;
+}
+
+.content code:not(pre code) {
+    background-color: var(--secondary-color);
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+    white-space: nowrap;
+}
+
+footer {
+    text-align: center;
+    padding: 2rem;
+    margin-top: 2rem;
+    background-color: var(--primary-color);
+    border-top: 1px solid var(--secondary-color);
+}
+
+/* Animate.css дополнительные классы */
+.fadeInUp {
+    animation-name: fadeInUp;
+    animation-duration: 0.5s;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 30px, 0);
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+    
+    header {
+        padding: 1rem;
+    }
+    
+    header h1 {
+        font-size: 1.5rem;
+    }
+    
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    
+    nav a {
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: 0.7rem;
+    }
+    
+    main {
+        padding: 1rem;
+    }
+    
+    .timeline-container {
+        margin: 1.5rem 0;
+    }
+    
+    .timeline {
+        margin: 3rem 0;
+    }
+    
+    .node-label {
+        font-size: 10px;
+        padding: 1px 4px;
+        bottom: -25px;
+    }
+    
+    .content {
+        padding: 1rem;
+    }
+    
+    .content pre {
+        font-size: 0.85em;
+        padding: 0.75rem;
+    }
+    
+    .content-container {
+        flex-direction: column;
+    }
+    
+    .toc {
+        position: relative;
+        top: 0;
+        width: 100%;
+        max-height: none;
+        margin-bottom: 1rem;
+        padding: 0.5rem;
+    }
+    
+    .toc-toggle {
+        margin-bottom: 0;
+        padding: 0.6rem;
+    }
+    
+    .toc-toggle:after {
+        content: " ▼";
+        float: right;
+    }
+    
+    .toc-toggle.collapsed:after {
+        content: " ▲";
+    }
+    
+    .toc-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+    }
+    
+    .toc-content.expanded {
+        max-height: 500px;
+        margin-top: 0.5rem;
+    }
+    
+    .toc a {
+        padding: 0.2rem 0.4rem;
+        font-size: 0.9rem;
+    }
+    
+    footer {
+        padding: 1rem;
+        margin-top: 1rem;
+    }
+    
+    .content code:not(pre code) {
+        white-space: normal;
+    }
+}
+
+/* Дополнительные стили для очень маленьких экранов */
+@media (max-width: 480px) {
+    .node {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .node-label {
+        bottom: -22px;
+        font-size: 9px;
+        white-space: normal;
+        max-width: 60px;
+        text-align: center;
+        line-height: 1.1;
+    }
+    
+    .content h1 {
+        font-size: 1.4rem;
+    }
+    
+    .content h2 {
+        font-size: 1.2rem;
+    }
+    
+    .content h3 {
+        font-size: 1.1rem;
+    }
+    
+    .toc-toggle {
+        font-size: 0.9rem;
+    }
+    
+    .toc li {
+        margin-bottom: 0.3rem;
+    }
+    
+    .content pre {
+        max-width: 100%;
+        overflow-x: auto;
+    }
+    
+    .content img {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+/* Стили для оглавления */
+.toc {
+    position: sticky;
+    top: 20px;
+    background-color: var(--secondary-color);
+    border-radius: 4px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-left: 4px solid var(--highlight-color);
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
+}
+
+.toc h3 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    color: var(--highlight-color);
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--accent-color);
+    position: sticky;
+    top: 0;
+    background-color: var(--secondary-color);
+}
+
+.toc ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+.toc li {
+    margin-bottom: 0.5rem;
+    padding-left: 0.5rem;
+}
+
+.toc-subitem {
+    padding-left: 1.5rem !important;
+    font-size: 0.95em;
+}
+
+.toc a {
+    color: var(--text-color);
+    text-decoration: none;
+    display: block;
+    padding: 0.3rem 0.5rem;
+    border-radius: 3px;
+    transition: background-color 0.2s ease;
+}
+
+.toc a:hover {
+    background-color: var(--primary-color);
+    color: var(--highlight-color);
+}
+
+.toc a.active {
+    background-color: var(--primary-color);
+    color: var(--highlight-color);
+    border-left: 2px solid var(--highlight-color);
+    padding-left: 0.8rem;
+}
+
+.toc-toggle {
+    display: block;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    border: none;
+    width: 100%;
+    padding: 0.8rem 1rem;
+    text-align: left;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    border-left: 4px solid var(--highlight-color);
+}
+
+.toc-toggle:hover {
+    background-color: var(--primary-color);
+}
+
+.content-container {
+    display: flex;
+    gap: 2rem;
+}
+
+.content {
+    flex: 1;
+    background-color: var(--primary-color);
+    padding: 2rem;
+    border-radius: 4px;
+    min-height: 400px;
+}
+
+/* Стили для заголовков */
+.content h1, .content h2, .content h3, .content h4, .content h5, .content h6 {
+    scroll-margin-top: 2rem; /* Отступ при скролле к якорю */
+}
+
+/* Стили для адаптивных изображений */
+.img-container {
+    max-width: 100%;
+    margin: 1rem 0;
+    border-radius: 4px;
+    overflow-x: auto;
+}
+
+.content img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 4px;
+}
+
+/* Улучшения для мобильного вида */
+.mobile-view .content h1 {
+    font-size: 1.6rem;
+}
+
+.mobile-view .content h2 {
+    font-size: 1.4rem;
+}
+
+.mobile-view .content h3 {
+    font-size: 1.2rem;
+}
+
+.mobile-view .content ul,
+.mobile-view .content ol {
+    padding-left: 1.5rem;
+}
+
+.mobile-view .content blockquote {
+    padding-left: 0.75rem;
+    margin-left: 0.75rem;
+} 

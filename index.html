@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>knowledge</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Made by <a href="https://github.com/Revellison">Revellison</a></h1>
+        <nav>
+            <ul>
+                <li><a href="#" data-category="frontend">Frontend</a></li>
+                <li><a href="#" data-category="backend">Backend</a></li>
+                <li><a href="#" data-category="cs">Computer Science</a></li>
+                <li><a href="#" data-category="database">Databases</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="timeline-container">
+            <div class="timeline" id="timeline">
+                <!-- Здесь будут добавляться точки динамически через JavaScript -->
+            </div>
+        </section>
+        
+        <section class="content-container">
+            <div id="toc-container" class="toc" style="display:none;">
+                <button id="toc-toggle" class="toc-toggle">Содержание</button>
+                <div id="toc" class="toc-content">
+                    <!-- Здесь будет оглавление -->
+                </div>
+            </div>
+            
+            <div class="content" id="content">
+                <!-- Здесь будет отображаться содержимое MD файлов -->
+            </div>
+        </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html> 
