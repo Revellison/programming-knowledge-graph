@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap');
+
 :root {
     --bg-color: #121212;
     --primary-color: #1e1e1e;
@@ -18,7 +20,7 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Rubik', sans-serif;
     background-color: var(--bg-color);
     color: var(--text-color);
     line-height: 1.6;
@@ -29,11 +31,27 @@ header {
     padding: 2rem;
     background-color: var(--primary-color);
     border-bottom: 1px solid var(--secondary-color);
+    display: flex;
+    gap: 1rem;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
 }
 
 header h1 {
-    text-align: center;
-    margin-bottom: 1rem;
+    text-align: left;
+    font-size: 1.5rem;
+    max-width: fit-content;
+}
+
+header h1 a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+header h1 a:hover {
+    color: var(--highlight-color);
 }
 
 nav ul {
@@ -41,6 +59,7 @@ nav ul {
     justify-content: center;
     list-style: none;
     gap: 2rem;
+    max-width: fit-content;
 }
 
 nav a {
@@ -49,11 +68,22 @@ nav a {
     padding: 0.5rem 1rem;
     border-radius: 4px;
     transition: all 0.3s ease;
+    display: block;
 }
 
 nav a:hover {
     background-color: var(--secondary-color);
     color: var(--highlight-color);
+}
+
+.nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
 }
 
 main {
@@ -213,7 +243,6 @@ footer {
     border-top: 1px solid var(--secondary-color);
 }
 
-/* Animate.css дополнительные классы */
 .fadeInUp {
     animation-name: fadeInUp;
     animation-duration: 0.5s;
@@ -230,7 +259,6 @@ footer {
     }
 }
 
-/* Адаптивность */
 @media (max-width: 768px) {
     body {
         font-size: 14px;
@@ -238,23 +266,46 @@ footer {
     
     header {
         padding: 1rem;
+        flex-wrap: wrap;
     }
     
     header h1 {
-        font-size: 1.5rem;
+        font-size: 1.2rem;
+    }
+    
+    nav {
+        width: 100%;
+        margin-top: 1rem;
     }
     
     nav ul {
-        flex-direction: column;
-        align-items: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
         gap: 0.5rem;
+    }
+    
+    nav li {
+        width: calc(50% - 0.5rem);
+        margin-bottom: 0.5rem;
     }
     
     nav a {
         display: block;
         width: 100%;
         text-align: center;
-        padding: 0.7rem;
+        padding: 0.7rem 0.5rem;
+        font-size: 0.9rem;
+        background-color: var(--secondary-color);
+        border: 1px solid transparent;
+        transition: all 0.2s ease;
+    }
+    
+    nav a:hover, nav a.active {
+        background-color: var(--primary-color);
+        color: var(--highlight-color);
+        border: 1px solid var(--highlight-color);
     }
     
     main {
@@ -267,6 +318,9 @@ footer {
     
     .timeline {
         margin: 3rem 0;
+        position: sticky;
+        top: 0;
+        z-index: 100;
     }
     
     .node-label {
@@ -300,6 +354,7 @@ footer {
     .toc-toggle {
         margin-bottom: 0;
         padding: 0.6rem;
+
     }
     
     .toc-toggle:after {
@@ -337,8 +392,42 @@ footer {
     }
 }
 
-/* Дополнительные стили для очень маленьких экранов */
 @media (max-width: 480px) {
+    header {
+        flex-direction: column;
+        align-items: center;
+        padding: 0.75rem;
+    }
+    
+    header h1 {
+        font-size: 1.1rem;
+        text-align: center;
+        margin-bottom: 0.5rem;
+    }
+    
+    header h1 span {
+        display: inline-block;
+    }
+    
+    nav {
+        margin-top: 0.5rem;
+    }
+    
+    nav ul {
+        gap: 0.3rem;
+    }
+    
+    nav li {
+        width: calc(50% - 0.3rem);
+        margin-bottom: 0.3rem;
+    }
+    
+    nav a {
+        padding: 0.5rem 0.3rem;
+        font-size: 0.8rem;
+        border-radius: 3px;
+    }
+    
     .node {
         width: 20px;
         height: 20px;
@@ -384,11 +473,10 @@ footer {
     }
 }
 
-/* Стили для оглавления */
 .toc {
     position: sticky;
     top: 20px;
-    background-color: var(--secondary-color);
+    background-color: var(--primary-color);
     border-radius: 4px;
     padding: 1rem;
     margin-bottom: 1rem;
@@ -431,7 +519,7 @@ footer {
     display: block;
     padding: 0.3rem 0.5rem;
     border-radius: 3px;
-    transition: background-color 0.2s ease;
+    transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .toc a:hover {
@@ -448,11 +536,12 @@ footer {
 
 .toc-toggle {
     display: block;
-    background-color: var(--secondary-color);
+    background-color: transparent;
     color: var(--text-color);
     border: none;
     width: 100%;
     padding: 0.8rem 1rem;
+    font-family: 'Rubik', sans-serif !important;
     text-align: left;
     border-radius: 4px;
     cursor: pointer;
@@ -479,12 +568,10 @@ footer {
     min-height: 400px;
 }
 
-/* Стили для заголовков */
 .content h1, .content h2, .content h3, .content h4, .content h5, .content h6 {
-    scroll-margin-top: 2rem; /* Отступ при скролле к якорю */
+    scroll-margin-top: 2rem;
 }
 
-/* Стили для адаптивных изображений */
 .img-container {
     max-width: 100%;
     margin: 1rem 0;
@@ -499,7 +586,6 @@ footer {
     border-radius: 4px;
 }
 
-/* Улучшения для мобильного вида */
 .mobile-view .content h1 {
     font-size: 1.6rem;
 }
